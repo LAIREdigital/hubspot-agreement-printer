@@ -4,14 +4,23 @@ const titleElement = document.querySelector('#document-title');
 const metaElement = document.querySelector('#document-meta');
 const agreementElement = document.querySelector('#agreement-text');
 const printButton = document.querySelector('#print-button');
+const searchParams = new URLSearchParams(window.location.search);
+const autoPrint = searchParams.get('autoprint') === '1';
 
 const readPayload = () => {
-  if (!window.location.hash) {
-    return null;
-  }
-
   try {
-    const payload = JSON.parse(decodeURIComponent(window.location.hash.slice(1)));
+    const queryPayload = searchParams.get('data');
+    const hashPayload = window.location.hash.slice(1);
+    const payload = queryPayload
+      ? JSON.parse(queryPayload)
+      : hashPayload
+        ? JSON.parse(decodeURIComponent(hashPayload))
+        : null;
+
+    if (!payload) {
+      return null;
+    }
+
     if (
       typeof payload.title !== 'string' ||
       typeof payload.clientCompany !== 'string' ||
@@ -27,6 +36,10 @@ const readPayload = () => {
 
 const payload = readPayload();
 
+if (searchParams.has('data')) {
+  window.history.replaceState(null, '', window.location.pathname);
+}
+
 if (payload) {
   document.title = `${payload.title} | LAIRE`;
   titleElement.textContent = payload.title;
@@ -40,6 +53,6 @@ if (payload) {
 
 printButton.addEventListener('click', () => window.print());
 
-if (payload && new URLSearchParams(window.location.search).get('autoprint') === '1') {
+if (payload && autoPrint) {
   window.setTimeout(() => window.print(), 500);
 }
