@@ -1,0 +1,149 @@
+:root {
+  color: #1f2933;
+  background: #e9edf2;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 20px;
+  color: white;
+  background: #17324d;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+}
+
+.toolbar div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.toolbar span {
+  color: #d7e4ef;
+  font-size: 12px;
+}
+
+button {
+  min-height: 40px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 5px;
+  color: #17324d;
+  background: #f7b733;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffc857;
+}
+
+.paper {
+  width: min(8.5in, calc(100% - 32px));
+  min-height: 11in;
+  margin: 28px auto;
+  padding: 0.75in;
+  background: white;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.15);
+}
+
+.brand {
+  margin-bottom: 26px;
+  color: #e85d2a;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #17324d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+}
+
+.meta {
+  margin: 0 0 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #e85d2a;
+  color: #536171;
+  font-size: 13px;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #202830;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.48;
+}
+
+.error {
+  min-height: auto;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@page {
+  size: letter;
+  margin: 0.65in;
+}
+
+@media print {
+  :root,
+  body {
+    background: white;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .paper {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .brand {
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: 22pt;
+  }
+}
+
+@media (max-width: 640px) {
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .paper {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    padding: 28px 22px;
+  }
+}

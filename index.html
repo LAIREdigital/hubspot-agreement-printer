@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; frame-ancestors https://*.hubspot.com https://*.hubspotusercontent.com; base-uri 'none'; form-action 'none'"
+    />
+    <title>LAIRE Agreement Printer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div>
+        <strong>LAIRE Agreement Printer</strong>
+        <span id="privacy-note">Document data stays in this browser.</span>
+      </div>
+      <button id="print-button" type="button">Print or Save PDF</button>
+    </header>
+
+    <main id="document" class="paper" hidden>
+      <div class="brand">LAIRE</div>
+      <h1 id="document-title"></h1>
+      <p id="document-meta" class="meta"></p>
+      <pre id="agreement-text"></pre>
+    </main>
+
+    <main id="error" class="paper error" hidden>
+      <h1>Agreement not available</h1>
+      <p>Return to HubSpot, build the agreement, and select Print or Save PDF again.</p>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
